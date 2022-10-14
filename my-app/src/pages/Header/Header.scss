@@ -1,0 +1,56 @@
+@mixin rowWrap {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+@mixin columnWrap {
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+.header-inner {
+  @include rowWrap;
+  justify-content: space-between;
+}
+
+.logo {
+  background: url('../../assets/img/MaxProff.png') center no-repeat;
+  width: 126px;
+  height: 44px;
+}
+
+.header-nav {
+  @include rowWrap;
+
+  gap: 24px;
+}
+
+.header-contact {
+  @include rowWrap;
+  justify-content: space-between;
+  text-align: center;
+
+  gap: 33px;
+}
+
+.header-contat__tel {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 85.7142857143%;
+}
+
+.header-container__inner {
+  @include columnWrap;
+}
+
+.header-contact__btn {
+  background-color: #fff !important;
+  color: #6cac3d;
+
+  padding: 13px 22px 13px 24px;
+
+  border: 1px solid #6cac3d;
+  border-radius: 3px;
+}
