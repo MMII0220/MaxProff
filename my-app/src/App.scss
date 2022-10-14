@@ -26,3 +26,7 @@ button {
   background-color: #6cac3d;
   color: #fff;
 }
+
+.fluid-font-size {
+  font-size: calcFluidFontSize(16, 48, 480, 1280);
+}
