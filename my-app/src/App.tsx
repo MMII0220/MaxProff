@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './pages/Header';
-import UnderMenu from './pages/UnderMenu';
-import MainPage from './pages/MainPage';
+import Header from './pages/Header/Header';
+import UnderMenu from './pages/UnderMenu/UnderMenu';
+import MainPage from './pages/MainPage/MainPage';
 import './styles/App.scss';
 
 function App() {

@@ -33,7 +33,7 @@ const Header = () => {
             </nav>
             <div className='header-contact'>
               <div className='header-container__inner'>
-                <a className='header-contat__tel' href='tel:+72332222222'>
+                <a className='header-contat__tel header-contat__tel--size' href='tel:+72332222222'>
                   <picture>
                     <div className='header-contact__icon'></div>
                   </picture>

@@ -1,3 +1,12 @@
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max) {
+  $k: ($f-max - $f-min)/ ($v-max - $v-min);
+  $b: $f-min - $k * $v-min;
+
+  $b: $b * 1px;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
 $texts: 'Roboto', sans-serif;
 $text-color: #171616;
 $text-hover: #234875;
@@ -43,12 +52,13 @@ button {
   color: #fff;
 }
 
-.fluid-font-size {
-  font-size: calcFluidFontSize(16, 48, 320, 1280);
-}
-
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.header-contat__tel--size {
+  font-size: calcFluidFontSize(16, 18, 320, 1400);
+  line-height: 85.7142857143%;
 }

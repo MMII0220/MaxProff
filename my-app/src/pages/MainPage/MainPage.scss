@@ -1,0 +1,124 @@
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max) {
+  $k: ($f-max - $f-min)/ ($v-max - $v-min);
+  $b: $f-min - $k * $v-min;
+
+  $b: $b * 1px;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+@mixin roWrap {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+@mixin columnWrap {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.main-page {
+  position: relative;
+
+  margin-top: 33px;
+  padding-top: 30px;
+}
+
+.main-page__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-page__image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+
+  background: url('../../assets/img/mainPage-bg.jpg') center no-repeat;
+  width: 1389px;
+  height: 719px;
+}
+
+.main-page__payment {
+  @include roWrap;
+
+  &:first-child {
+    margin: 64px 0 26px 0;
+  }
+}
+
+.main-page__text {
+  font-size: calcFluidFontSize(40, 60, 320, 1400);
+
+  font-weight: 700;
+  line-height: 85.71428571428571%;
+
+  width: 48%;
+  height: auto;
+
+  margin-bottom: 31px;
+}
+
+.main-page__subText {
+  font-size: calcFluidFontSize(30, 44, 320, 1400);
+
+  font-weight: 700;
+  line-height: 118.1818181818182%;
+}
+
+.main-page__highlight {
+  background-color: #6cac3d;
+  color: #fff;
+}
+
+.main-page__payment-text {
+  font-weight: 700;
+  width: 153px;
+  height: 42px;
+
+  margin-right: 74px;
+}
+
+.main-page__signature-text {
+  font-weight: 700;
+  width: 211px;
+  height: 42px;
+}
+
+.main-page__payment--size {
+  width: 60px;
+  height: 60px;
+}
+
+.main-page__payment-image {
+  background: url('../../assets/img/cooperation\ 1.png') center no-repeat;
+}
+
+.main-page__signature {
+  background: url('../../assets/img/consent\ 2.png') center no-repeat;
+}
+
+.main-page__departure {
+  background: url('../../assets/img/builder\ 3.png') center no-repeat;
+}
+
+.main-page__guarantee {
+  background: url('../../assets/img/guarantee\ 4.png') center no-repeat;
+}
+
+// font-size: calcFluidFontSize(16, 18, 320, 1400);
+
+.main-page__calculator {
+  width: 461px;
+  height: 695px;
+
+  background: #ffffff;
+  border-radius: 7px;
+}
+
+.main-page__calculator-supText {
+  text-transform: uppercase;
+}
