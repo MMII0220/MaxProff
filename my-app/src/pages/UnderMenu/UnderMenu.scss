@@ -1,0 +1,54 @@
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max) {
+  $k: ($f-max - $f-min)/ ($v-max - $v-min);
+  $b: $f-min - $k * $v-min;
+
+  $b: $b * 1px;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+$text-hover: #234875;
+
+@mixin roWrap {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+@mixin columnWrap {
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+.header-menu__inner {
+  margin-top: 25px;
+  padding: 23px 0 24px 0;
+
+  border-top: 1px solid #6cac3d;
+  border-bottom: 1px solid #6cac3d;
+}
+
+.header-menu__links {
+  @include roWrap;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.header-menu__link {
+  margin-right: 10px;
+  line-height: 85.333333%;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 5%;
+  }
+  &:hover {
+    color: $text-hover;
+  }
+}
+
+.fa-circle-chevron-down {
+  margin-left: 5px;
+}

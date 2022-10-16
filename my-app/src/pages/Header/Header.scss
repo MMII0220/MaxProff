@@ -1,4 +1,13 @@
-@mixin rowWrap {
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max) {
+  $k: ($f-max - $f-min)/ ($v-max - $v-min);
+  $b: $f-min - $k * $v-min;
+
+  $b: $b * 1px;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+@mixin roWrap {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
@@ -10,8 +19,12 @@
   flex-flow: column wrap;
 }
 
+.header {
+  margin-top: 23px;
+}
+
 .header-inner {
-  @include rowWrap;
+  @include roWrap;
   justify-content: space-between;
 }
 
@@ -22,13 +35,17 @@
 }
 
 .header-nav {
-  @include rowWrap;
+  @include roWrap;
 
   gap: 24px;
 }
 
+.header-nav__link {
+  font-size: calcFluidFontSize(14, 16, 320, 1400);
+}
+
 .header-contact {
-  @include rowWrap;
+  @include roWrap;
   justify-content: space-between;
   text-align: center;
 
@@ -37,8 +54,23 @@
 
 .header-contat__tel {
   font-weight: 700;
-  font-size: 18px;
+  font-size: calcFluidFontSize(16, 18, 320, 1400);
   line-height: 85.7142857143%;
+
+  margin-bottom: 5px;
+}
+
+.header-contact__schedule {
+  font-size: calcFluidFontSize(12, 14, 320, 1400);
+}
+
+.header-contact__icon {
+  width: 18px;
+  height: 18px;
+  color: red;
+  background: url('../../assets/img/header-tel__icon.png') center no-repeat;
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .header-container__inner {
@@ -46,6 +78,7 @@
 }
 
 .header-contact__btn {
+  font-size: calcFluidFontSize(12, 16, 320, 1400);
   background-color: #fff !important;
   color: #6cac3d;
 
@@ -53,4 +86,10 @@
 
   border: 1px solid #6cac3d;
   border-radius: 3px;
+  transition: 0.1s linear all;
+
+  &:hover {
+    background-color: #6cac3d !important;
+    color: #fff;
+  }
 }

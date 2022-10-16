@@ -7,7 +7,7 @@ const Header = () => {
       <header className='header'>
         <div className='container'>
           <div className='header-inner'>
-            <div className='logo'></div>
+            <a href='#' className='logo'></a>
             <nav className='header-nav'>
               <a className='header-nav__link header-nav__link-size' href='#'>
                 Цены
@@ -34,6 +34,9 @@ const Header = () => {
             <div className='header-contact'>
               <div className='header-container__inner'>
                 <a className='header-contat__tel' href='tel:+72332222222'>
+                  <picture>
+                    <div className='header-contact__icon'></div>
+                  </picture>
                   +7 (233) 222-22-22
                 </a>
                 <p className='header-contact__schedule'>08:00 - 22:00, без выходных</p>
