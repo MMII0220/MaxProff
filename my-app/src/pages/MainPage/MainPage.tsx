@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from '../../Components/InputRadio/Input';
 import './MainPage.scss';
 
 const index = () => {
@@ -65,46 +66,48 @@ const index = () => {
               <form className='main-page__form'>
                 <p className='page-form__supText'>Вид ремонта:</p>
                 <div className='page-form__content'>
-                  <input
-                    type='checkbox'
-                    name='cosmetic'
-                    className='form-input__checkbox'
-                    value='Косметический'
-                  />
-                  <label htmlFor='' className='page-form__text'>
+                  <label htmlFor='cosmetic' className='page-form__text'>
+                    <Input
+                      type='radio'
+                      name='TypeOfRepair'
+                      className='form-input__checkbox'
+                      id='cosmetic'
+                      value='Косметический'
+                    />
                     Косметический
                   </label>
-                </div>
-                <div className='page-form__content'>
-                  <input
-                    type='checkbox'
-                    name='capital'
-                    className='form-input__checkbox'
-                    value='Капитальный'
-                  />
-                  <label htmlFor='' className='page-form__text'>
+
+                  <label htmlFor='capital' className='page-form__text'>
+                    <input
+                      type='radio'
+                      name='TypeOfRepair'
+                      className='form-input__checkbox'
+                      id='capital'
+                      value='Капитальный'
+                    />
                     Капитальный
                   </label>
                 </div>
                 <div className='page-form__content'>
-                  <input
-                    type='checkbox'
-                    name='fullConstruction'
-                    className='form-input__checkbox'
-                    value='Под ключ'
-                  />
-                  <label htmlFor='' className='page-form__text'>
+                  <label htmlFor='fullConstruction' className='page-form__text'>
+                    <input
+                      type='radio'
+                      name='TypeOfRepair'
+                      className='form-input__checkbox'
+                      id='fullConstruction'
+                      value='Под ключ'
+                    />
                     Под ключ
                   </label>
-                </div>
-                <div className='page-form__content'>
-                  <input
-                    type='checkbox'
-                    name='designer'
-                    className='form-input__checkbox'
-                    value='Дизайнерский'
-                  />
-                  <label htmlFor='' className='page-form__text'>
+
+                  <label htmlFor='designer' className='page-form__text'>
+                    <input
+                      type='radio'
+                      name='TypeOfRepair'
+                      className='form-input__checkbox'
+                      id='designer'
+                      value='Дизайнерский'
+                    />
                     Дизайнерский
                   </label>
                 </div>
@@ -115,9 +118,8 @@ const index = () => {
         </div>
         {/* container */}
 
-        <article className='main-page__bg'>
-          <div className='main-page__image'></div>
-        </article>
+        {/* Background Image Main Page */}
+        <article className='main-page__bg'></article>
         {/* container */}
       </div>
       {/* main-page */}

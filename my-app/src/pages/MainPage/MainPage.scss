@@ -31,7 +31,7 @@
   justify-content: space-between;
 }
 
-.main-page__image {
+.main-page__bg {
   position: absolute;
   right: 0;
   top: 0;
@@ -56,7 +56,7 @@
   font-weight: 700;
   line-height: 85.71428571428571%;
 
-  width: 48%;
+  width: 100%;
   height: auto;
 
   margin-bottom: 31px;
@@ -117,8 +117,59 @@
 
   background: #ffffff;
   border-radius: 7px;
+
+  padding: 38px 24px 0 55px;
 }
 
 .main-page__calculator-supText {
+  width: 382px;
   text-transform: uppercase;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.page-form__supText {
+  margin-top: 28px;
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #595959;
+}
+
+.page-form__content {
+  @include roWrap;
+  justify-content: space-between;
+
+  &:last-child {
+    margin-top: 11px;
+  }
+}
+
+.form-input__checkbox {
+  margin-right: 10px;
+}
+
+.page-form__text {
+  width: 175px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  cursor: pointer;
+
+  color: #595959;
+
+  &:hover {
+    color: #2d4872;
+  }
+
+  &:focus {
+    color: #2d4872;
+  }
+}
+.page-form__text:focus {
+  color: red;
 }
