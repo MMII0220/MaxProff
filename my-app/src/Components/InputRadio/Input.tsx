@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Input = (props: any) => {
+interface Props {
+  type: string;
+  name: string;
+  id: string;
+  value: string | number;
+}
+
+const Input = (props: Props) => {
   return <input className='form-input__checkbox' {...props} />;
 };
 

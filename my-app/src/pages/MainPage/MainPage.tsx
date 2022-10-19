@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../../Components/InputRadio/Input';
 import './MainPage.scss';
 
-const index = () => {
+const MainPage = () => {
+  const [rangeValue, setRangeValue] = useState<number | undefined>(35);
+  const [telNumber, setTelNumber] = useState<string | undefined>('+7');
+
+  function rangeChange(event: string) {
+    setRangeValue(parseInt(event, 10));
+  }
+
+  function typeNumber(num: string) {
+    let pattern = /(\+7|8)[\s(]?(\d{3})[\s)]?(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/g;
+    const ans = num.replace(pattern, '+7 ($2) $3-$4-$5');
+    setTelNumber(ans);
+  }
+
   return (
     <section className='section'>
       <div className='main-page'>
@@ -70,7 +83,6 @@ const index = () => {
                     <Input
                       type='radio'
                       name='TypeOfRepair'
-                      className='form-input__checkbox'
                       id='cosmetic'
                       value='Косметический'
                     />
@@ -78,10 +90,9 @@ const index = () => {
                   </label>
 
                   <label htmlFor='capital' className='page-form__text'>
-                    <input
+                    <Input
                       type='radio'
                       name='TypeOfRepair'
-                      className='form-input__checkbox'
                       id='capital'
                       value='Капитальный'
                     />
@@ -90,10 +101,9 @@ const index = () => {
                 </div>
                 <div className='page-form__content'>
                   <label htmlFor='fullConstruction' className='page-form__text'>
-                    <input
+                    <Input
                       type='radio'
                       name='TypeOfRepair'
-                      className='form-input__checkbox'
                       id='fullConstruction'
                       value='Под ключ'
                     />
@@ -101,10 +111,9 @@ const index = () => {
                   </label>
 
                   <label htmlFor='designer' className='page-form__text'>
-                    <input
+                    <Input
                       type='radio'
                       name='TypeOfRepair'
-                      className='form-input__checkbox'
                       id='designer'
                       value='Дизайнерский'
                     />
@@ -112,7 +121,101 @@ const index = () => {
                   </label>
                 </div>
               </form>
+
+              <form className='main-page__form'>
+                <p className='page-form__supText'>Тип вашей недвижимости:</p>
+
+                <div className='page-form__content'>
+                  <label htmlFor='newBuilding' className='page-form__text'>
+                    <Input
+                      type='radio'
+                      name='typeProperty'
+                      id='newBuilding'
+                      value='Новостройка'
+                    />
+                    Новостройка
+                  </label>
+
+                  <label htmlFor='secondBuilding' className='page-form__text'>
+                    <Input
+                      type='radio'
+                      name='typeProperty'
+                      id='secondBuilding'
+                      value='Вторичное жилье'
+                    />
+                    Вторичное жилье
+                  </label>
+                </div>
+              </form>
+
+              <form className='main-page__form'>
+                <p className='page-form__supText'>Количество комнат</p>
+
+                <div className='room-form__content'>
+                  <label htmlFor='roomOne' className='page-form__text'>
+                    <Input type='radio' name='roomType' id='roomOne' value='1' />1
+                  </label>
+
+                  <label htmlFor='roomTwo' className='page-form__text'>
+                    <Input type='radio' name='roomType' id='roomTwo' value='2' />2
+                  </label>
+
+                  <label htmlFor='roomThree' className='page-form__text'>
+                    <Input type='radio' name='roomType' id='roomThree' value='3' />3
+                  </label>
+
+                  <label htmlFor='roomFour' className='page-form__text'>
+                    <Input type='radio' name='roomType' id='roomFour' value='4' />4
+                  </label>
+                </div>
+              </form>
+
+              <form className='area-form' method='post'>
+                <p className='page-form__supText'>Площадь, м2:</p>
+
+                <input
+                  className='area-form__range'
+                  id='area-size'
+                  type='range'
+                  value={rangeValue}
+                  min='1'
+                  max='100'
+                  step='1'
+                  onChange={(e) => rangeChange(e.target.value)}
+                />
+                <label htmlFor='area-size' className='area-form__number'>
+                  {rangeValue}
+                </label>
+              </form>
+
+              <div className='repair-price'>
+                <div className='price-days__content'>
+                  <p className='repair-price__text'>Срок ремонта:</p>
+                  <p className='repair-price__days'>до 34 дней</p>
+                </div>
+                <div className='sale-price__content'>
+                  <p className='repair-price__text'>Скидка составит:</p>
+                  <p className='repair-price__days'>23 765 руб</p>
+                </div>
+
+                <article className='repair-price__bg'></article>
+              </div>
+
+              <div className='calculator-contact'>
+                <p className='page-form__supText'>Введите номер телефона</p>
+                <form method='get' className='calculator-contact__info'>
+                  <input
+                    className='calculator-contact__number'
+                    type='tel'
+                    name='tel'
+                    value={telNumber}
+                    onChange={(e) => typeNumber(e.target.value)}
+                  />
+                  <button className='calculator-contact__order'>Заказать</button>
+                </form>
+              </div>
             </div>
+            {/* main-page__calculator */}
           </div>
           {/* main-page__inner */}
         </div>
@@ -127,4 +230,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default MainPage;
