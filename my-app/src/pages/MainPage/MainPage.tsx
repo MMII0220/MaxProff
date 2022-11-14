@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import { number } from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import Input from '../../Components/InputRadio/Input';
 import './MainPage.scss';
 
 const MainPage = () => {
-  const [rangeValue, setRangeValue] = useState<number | undefined>(35);
-  const [telNumber, setTelNumber] = useState<string | undefined>('+7');
+  const [rangeValue, setRangeValue] = useState(35);
+  const [telNumber, setTelNumber] = useState('+7');
+  const [reparTime, setRepairTime] = useState(0);
+  const [saleMoney, setSaleMoney] = useState(0);
 
-  function rangeChange(event: string) {
-    setRangeValue(parseInt(event, 10));
+  function rangeChange(value: number): void {
+    setRangeValue(value);
   }
 
-  function typeNumber(num: string) {
+  function typeNumber(num: string): void {
     let pattern = /(\+7|8)[\s(]?(\d{3})[\s)]?(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/g;
-    const ans = num.replace(pattern, '+7 ($2) $3-$4-$5');
-    setTelNumber(ans);
+    const ans: string = num.replace(pattern, '+7 ($2) $3-$4-$5');
+
+    if (ans.length < 13 || ans.length === 18) {
+      setTelNumber(ans);
+    } else {
+      setTelNumber('+7');
+    }
   }
+
+  useEffect(() => {
+    const totalDays = Math.ceil(rangeValue / 3);
+    const totalSale = rangeValue * 453;
+
+    setRepairTime(totalDays);
+    setSaleMoney(totalSale);
+  });
 
   return (
     <section className='section'>
@@ -181,7 +197,7 @@ const MainPage = () => {
                   min='1'
                   max='100'
                   step='1'
-                  onChange={(e) => rangeChange(e.target.value)}
+                  onChange={(e) => rangeChange(parseInt(e.target.value))}
                 />
                 <label htmlFor='area-size' className='area-form__number'>
                   {rangeValue}
@@ -191,11 +207,11 @@ const MainPage = () => {
               <div className='repair-price'>
                 <div className='price-days__content'>
                   <p className='repair-price__text'>Срок ремонта:</p>
-                  <p className='repair-price__days'>до 34 дней</p>
+                  <p className='repair-price__days'>до {reparTime} дней</p>
                 </div>
                 <div className='sale-price__content'>
                   <p className='repair-price__text'>Скидка составит:</p>
-                  <p className='repair-price__days'>23 765 руб</p>
+                  <p className='repair-price__days'>{saleMoney} руб</p>
                 </div>
 
                 <article className='repair-price__bg'></article>
