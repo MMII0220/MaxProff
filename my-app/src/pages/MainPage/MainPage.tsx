@@ -9,10 +9,12 @@ const MainPage = () => {
   const [reparTime, setRepairTime] = useState(0);
   const [saleMoney, setSaleMoney] = useState(0);
 
+  // Choose room length
   function rangeChange(value: number): void {
     setRangeValue(value);
   }
 
+  // Regulation for telephone number
   function typeNumber(num: string): void {
     let pattern = /(\+7|8)[\s(]?(\d{3})[\s)]?(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/g;
     const ans: string = num.replace(pattern, '+7 ($2) $3-$4-$5');
