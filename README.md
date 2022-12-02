@@ -1,2 +1,2 @@
 # MaxProff
-React/Typescript test
+React/Typescript project
